@@ -7,10 +7,11 @@ namespace ReversePlatformer
     public class PlayGameState : FSMState
     {
         #region Constructor
-        public PlayGameState(Avatar avatar, GameStateController controller)
+        public PlayGameState(Avatar avatar, Player player, GameStateController controller)
         {
             _controller = controller;
             _avatar = avatar;
+            _player = player;
             stateID = StateID.GameMain;
         }
         #endregion
@@ -18,12 +19,14 @@ namespace ReversePlatformer
         #region Fields
         private GameStateController _controller = null;
         private Avatar _avatar = null;
+        private Player _player = null;
         #endregion
 
         #region Overrides
         public override void DoBeforeEntering()
         {
             _avatar.StartRolling();
+            _player.StartInteracting();
         }
 
         public override void Act()

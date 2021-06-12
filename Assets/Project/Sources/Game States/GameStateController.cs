@@ -14,7 +14,8 @@ namespace ReversePlatformer
 
         [Header("References Necessary for MainGame")]
         [SerializeField] private Avatar _avatar = null;
-        //[SerializeField] private GameObject caca = null;
+        [SerializeField] private Player _player = null;
+
         [Header("References Necessary for GameOver")]
         //[SerializeField] private GameObject popo = null;
 
@@ -47,7 +48,7 @@ namespace ReversePlatformer
             StartGameState start = new StartGameState(_countdownLength, _countdownText, this);
             start.AddTransition(Transition.GameStartCoundownOver, StateID.GameMain);
 
-            PlayGameState play = new PlayGameState(_avatar, this);
+            PlayGameState play = new PlayGameState(_avatar, _player, this);
             play.AddTransition(Transition.GamePlayerDestroyed, StateID.GameOver);
 
             EndGameState end = new EndGameState(this);
