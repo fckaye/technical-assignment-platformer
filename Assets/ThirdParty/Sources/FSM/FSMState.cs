@@ -52,11 +52,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 public enum Transition
 {
     NullTransition = 0, // Use this transition to represent a non-existing transition in your system
-    StartCoundownOver,
-    PlayerDestroyed,
-    GamePaused,
-    GameUnpaused,
-    SelectRestart
+    GameStartCoundownOver,
+    GamePlayerDestroyed,
+    GameSelectRestart
 }
 
 /// <summary>
@@ -67,8 +65,7 @@ public enum StateID
 {
     NullStateID = 0, // Use this ID to represent a non-existing State in your system	
     GameStart,
-    MainGame,
-    Pause,
+    GameMain,
     GameOver
 }
 
@@ -169,7 +166,6 @@ public abstract class FSMState
     /// NPC is a reference to the object that is controlled by this class
     /// </summary>
     public abstract void Reason();
-    //public abstract void Reason(GameObject player, GameObject npc);
 
     /// <summary>
     /// This method controls the behavior of the NPC in the game World.
@@ -177,6 +173,4 @@ public abstract class FSMState
     /// NPC is a reference to the object that is controlled by this class
     /// </summary>
     public abstract void Act();
-    //public abstract void Act(GameObject player, GameObject npc);
-
 } // class FSMState

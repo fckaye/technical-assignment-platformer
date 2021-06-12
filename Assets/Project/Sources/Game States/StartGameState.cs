@@ -9,16 +9,17 @@ namespace ReversePlatformer
     public class StartGameState : FSMState
     {
         #region Constructor
-        public StartGameState(int countdownLength, TextMeshProUGUI countdownText, GameStateController owner)
+        public StartGameState(int countdownLength, TextMeshProUGUI countdownText, GameStateController controller)
         {
-            _owner = owner;
+            _controller = controller;
             _countdownText = countdownText;
             _countdownLength = countdownLength;
+            stateID = StateID.GameStart;
         }
         #endregion
 
         #region Fields
-        private GameStateController _owner = null;
+        private GameStateController _controller = null;
         private TextMeshProUGUI _countdownText = null;
         private int _countdownLength;
         private int _countdown = int.MaxValue;
@@ -39,9 +40,7 @@ namespace ReversePlatformer
         {
             if (_countdown < 0)
             {
-                Debug.Log("Countdown ended");
-                //Return control to gamestatecontroller to transition to game state.
-                _owner.SetTransition(Transition.StartCoundownOver);
+                _controller.SetTransition(Transition.GameStartCoundownOver);
             }
         }
 
