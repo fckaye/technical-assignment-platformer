@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ReversePlatformer
 {
+    [RequireComponent(typeof(HazardScanner))]
     [RequireComponent(typeof(SphereCollider))]
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(ConstantForce))]

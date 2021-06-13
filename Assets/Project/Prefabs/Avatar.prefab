@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8532116325256742770}
   - component: {fileID: 8370053606908953855}
+  - component: {fileID: 1771614638700484992}
   - component: {fileID: 8532116325256742769}
   - component: {fileID: 8532116325256742768}
   - component: {fileID: 8532116325256742775}
@@ -50,6 +51,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 7
   _maxHitPoints: 1
+--- !u!114 &1771614638700484992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532116325256742774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f408d9c7f5820014c854377ab0069a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8532116325256742769
 MeshFilter:
   m_ObjectHideFlags: 0
