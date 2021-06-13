@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8532116325256742771}
   - component: {fileID: 928645733}
   - component: {fileID: 6677805849831173058}
+  - component: {fileID: 679982136190681566}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -50,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3abc804e1136f44a45b55d76d85c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8
+  _speed: 10
   _maxHitPoints: 1
 --- !u!114 &1771614638700484992
 MonoBehaviour:
@@ -153,6 +154,18 @@ ConstantForce:
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!114 &6677805849831173058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532116325256742774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f408d9c7f5820014c854377ab0069a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &679982136190681566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -106,31 +106,25 @@ namespace ReversePlatformer
         /// <param name="hazard"></param>
         private IEnumerator ApproachHazard(Hazard hazard)
         {
-            // Stop applying force at this point, to begin slowdown.
-            _constantForce.force = Vector3.zero;
-            yield return null;
-
             // Get close to the edge of the hazard and stop.
-            while (Mathf.Abs(transform.position.x - hazard._transform.position.x) > 2)
+            float edgeDistance = hazard._jumpType == JumpableTypes.longJumpable ? 2 : 1;
+            while (Mathf.Abs(transform.position.x - hazard._transform.position.x) > edgeDistance)
             {
                 yield return null;
             }
+            _constantForce.force = Vector3.zero;
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
 
             // Perform the respective jump if it is possible.
             if (hazard._canBeJumped)
             {
-                if (hazard._requiredJumpType == JumpableTypes.longJumpable)
-                {
-                    Vector3 jumpTarget = new Vector3(transform.position.x + 4, transform.position.y, transform.position.z);
-                    Tween jump = transform.DOJump(jumpTarget, 2, 1, 1, false);
-                    yield return jump.WaitForCompletion();
-                }
-                else
-                {
-                    //_rb.DOJump(new Vector3(1, 1, 0), 2, 1, 2, false);
-                }
+                Vector3 longJumpType = new Vector3(4, 0, 0);
+                Vector3 highJumpType = new Vector3(1, 1, 0);
+                Vector3 jumpType = hazard._jumpType == JumpableTypes.longJumpable ? longJumpType: highJumpType;
+                Vector3 target = transform.position + jumpType;
+                Tween jump = transform.DOJump(target, 2, 1, 1, false);
+                yield return jump.WaitForCompletion();
             }
 
             // Back to normal, keep moving forward.

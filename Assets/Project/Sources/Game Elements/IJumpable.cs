@@ -2,6 +2,6 @@
 {
     public interface IJumpable
     {
-        (JumpableTypes, bool) onJumpableApproach();
+        Hazard onJumpableApproach();
     }
 }

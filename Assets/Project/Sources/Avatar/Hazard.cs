@@ -10,12 +10,12 @@ namespace ReversePlatformer
     {
         public Hazard(JumpableTypes jumpType, bool jumpable, Transform hazardTransform)
         {
-            _requiredJumpType = jumpType;
+            _jumpType = jumpType;
             _canBeJumped = jumpable;
             _transform = hazardTransform;
         }
 
-        public JumpableTypes _requiredJumpType;
+        public JumpableTypes _jumpType;
         public bool _canBeJumped;
         public Transform _transform;
     }

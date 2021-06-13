@@ -389,6 +389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 755743016}
+  - component: {fileID: 5614429059633403782}
   - component: {fileID: 755743019}
   - component: {fileID: 755743018}
   - component: {fileID: 755743017}
@@ -413,6 +414,21 @@ Transform:
   m_Father: {fileID: 436618297}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5614429059633403782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755743015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54aaa47ae7b90934a8f9d44111c04de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpType: 1
+  _canBeJumped: 1
+  _hasObstacleOnTop: 1
 --- !u!33 &755743019
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -482,6 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1795148113}
+  - component: {fileID: 6127915260263300371}
   - component: {fileID: 1795148116}
   - component: {fileID: 1795148115}
   - component: {fileID: 1795148114}
@@ -506,6 +523,21 @@ Transform:
   m_Father: {fileID: 436618297}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6127915260263300371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795148112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54aaa47ae7b90934a8f9d44111c04de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpType: 1
+  _canBeJumped: 1
+  _hasObstacleOnTop: 0
 --- !u!33 &1795148116
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -692,6 +724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee20102a9eb0b304c9e0357e84fdf840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _jumpType: 0
+  _canBeJumped: 0
 --- !u!1 &8116941286431157768
 GameObject:
   m_ObjectHideFlags: 0

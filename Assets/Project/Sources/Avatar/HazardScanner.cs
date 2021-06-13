@@ -23,9 +23,7 @@ namespace ReversePlatformer
                     IJumpable jumpable = hit.collider.gameObject.GetComponent<IJumpable>();
                     if (jumpable != null)
                     {
-                        (JumpableTypes jumpType, bool canBeJumped) = jumpable.onJumpableApproach();
-                        Hazard hazardAhead = new Hazard(jumpType, canBeJumped, hit.collider.transform);
-                        return hazardAhead;
+                        return jumpable.onJumpableApproach();
                     }
                 }
             }
