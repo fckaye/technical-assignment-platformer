@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine.SceneManagement;
 
 namespace ReversePlatformer
 {
     public class EndGameState : FSMState
     {
         #region Constructor
-        public EndGameState(GameStateController controller)
+        public EndGameState(GameOverPanel gameOverPanel, GameStateController controller)
         {
+            _gameOverPanel = gameOverPanel;
             _controller = controller;
             stateID = StateID.GameOver;
         }
@@ -16,18 +15,26 @@ namespace ReversePlatformer
 
         #region Fields
         private GameStateController _controller = null;
+        private GameOverPanel _gameOverPanel = null;
         #endregion
 
         #region Overrides
-        public override void Act()
+        public override void DoBeforeEntering()
         {
-            //Write here what's supposed to happen on the endgamestate
-            Debug.Log("This is the EndGameState");
+            _gameOverPanel.DisplayGameOverPanel();
         }
 
         public override void Reason()
         {
-            //Write here the condition to reset the scene.
+            if (_gameOverPanel.IsReadyToRestart)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+            }
+        }
+
+        public override void Act()
+        {
+
         }
         #endregion
     }

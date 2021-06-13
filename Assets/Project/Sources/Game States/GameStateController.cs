@@ -17,7 +17,7 @@ namespace ReversePlatformer
         [SerializeField] private Player _player = null;
 
         [Header("References Necessary for GameOver")]
-        //[SerializeField] private GameObject popo = null;
+        [SerializeField] private GameOverPanel _gameOverPanel = null;
 
         private FSMSystem fsm;
         #endregion
@@ -51,7 +51,7 @@ namespace ReversePlatformer
             PlayGameState play = new PlayGameState(_avatar, _player, this);
             play.AddTransition(Transition.GamePlayerDestroyed, StateID.GameOver);
 
-            EndGameState end = new EndGameState(this);
+            EndGameState end = new EndGameState(_gameOverPanel, this);
 
             fsm = new FSMSystem();
             fsm.AddState(start);

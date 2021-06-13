@@ -71,7 +71,6 @@ namespace ReversePlatformer
             _hitPoints--;
             if (_hitPoints <= 0)
             {
-                Debug.Log("The avatar died.");
                 _currentStatus = AvatarStatus.Dead;
             }
         }
