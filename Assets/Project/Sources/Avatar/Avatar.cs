@@ -27,6 +27,7 @@ namespace ReversePlatformer
         private int _hitPoints;
         private Rigidbody _rb = null;
         private ConstantForce _constantForce = null;
+        private HazardScanner _hazardScanner = null;
         #endregion
 
         #region MonoBehaviour Callbacks
@@ -36,6 +37,7 @@ namespace ReversePlatformer
             _hitPoints = _maxHitPoints;
             _rb = gameObject.GetComponent<Rigidbody>();
             _constantForce = gameObject.GetComponent<ConstantForce>();
+            _hazardScanner = gameObject.GetComponent<HazardScanner>();
         }
 
         private void FixedUpdate()
@@ -80,7 +82,11 @@ namespace ReversePlatformer
         #region Private
         private void MoveForward()
         {
-
+            Hazard hazardAhead =_hazardScanner.ScanForHazardsAhead();
+            if (hazardAhead != null)
+            {
+                Debug.Log("Prepare for a jump.");
+            }
         }
         #endregion
     }
