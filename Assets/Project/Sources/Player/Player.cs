@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ReversePlatformer
 {
+    /// <summary>
+    /// The Player of the Game.
+    /// </summary>
     public class Player : MonoBehaviour
     {
         #region Fields
@@ -26,8 +29,7 @@ namespace ReversePlatformer
                     PlaceSelectedObjectInScene();
                 }
 
-                //Add scrollwheel interactions here later.
-
+                //TODO: Add scrollwheel interactions here later.
             }
         }
         #endregion
@@ -59,7 +61,7 @@ namespace ReversePlatformer
 
         private void PlaceSelectedObjectInScene()
         {
-
+            //TODO: Implement object placement into the level.
         }
         #endregion
     }

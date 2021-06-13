@@ -5,6 +5,9 @@ using DG.Tweening;
 
 namespace ReversePlatformer
 {
+    /// <summary>
+    /// The Avatar of the game, this agent can move and jump by itself.
+    /// </summary>
     [RequireComponent(typeof(HazardScanner))]
     [RequireComponent(typeof(SphereCollider))]
     [RequireComponent(typeof(Rigidbody))]
@@ -72,6 +75,9 @@ namespace ReversePlatformer
             }
         }
 
+        /// <summary>
+        /// Damage the Avatar by 1.
+        /// </summary>
         public void ReceiveDamage()
         {
             _hitPoints--;
