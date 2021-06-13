@@ -15,6 +15,8 @@ namespace ReversePlatformer
         {
             Idle,
             MovingForward,
+            ApproachingHazard,
+            CrossingHazard,
             Dead
         }
 
@@ -42,10 +44,7 @@ namespace ReversePlatformer
 
         private void FixedUpdate()
         {
-            if (_currentStatus == AvatarStatus.MovingForward)
-            {
-                MoveForward();
-            }
+            DetermineMovement();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -80,13 +79,55 @@ namespace ReversePlatformer
         #endregion
 
         #region Private
-        private void MoveForward()
+        /// <summary>
+        /// Decide what action should the Avatar do given current circumstances.
+        /// </summary>
+        private void DetermineMovement()
         {
-            Hazard hazardAhead =_hazardScanner.ScanForHazardsAhead();
-            if (hazardAhead != null)
+            if (_currentStatus == AvatarStatus.MovingForward)
             {
-                Debug.Log("Prepare for a jump.");
+                Hazard hazardAhead = _hazardScanner.ScanForHazardsAhead();
+                if (hazardAhead != null)
+                {
+                    StartCoroutine(ApproachHazard(hazardAhead));
+                    _currentStatus = AvatarStatus.ApproachingHazard;
+                }
             }
+        }
+
+        /// <summary>
+        /// The Avatar carefully approaches the obstacle ahead.
+        /// Stops in front of the Hazard and crosses it.
+        /// </summary>
+        /// <param name="hazard"></param>
+        private IEnumerator ApproachHazard(Hazard hazard)
+        {
+            // Stop applying force at this point, to begin slowdown.
+            _constantForce.force = Vector3.zero;
+            yield return null;
+
+            // Get close to the edge of the hazard and stop.
+            while (Mathf.Abs(transform.position.x - hazard._transform.position.x) > 2)
+            {
+                yield return null;
+            }
+            _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+
+            // Perform the respective jump if it is possible.
+            if (hazard._canBeJumped)
+            {
+                if (hazard._requiredJumpType == JumpableTypes.longJumpable)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+
+            Debug.Log("TOO CLOSE!");
         }
         #endregion
     }

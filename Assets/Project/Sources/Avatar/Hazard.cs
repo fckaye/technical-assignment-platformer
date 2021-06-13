@@ -12,11 +12,11 @@ namespace ReversePlatformer
         {
             _requiredJumpType = jumpType;
             _canBeJumped = jumpable;
-            _hazardTransform = hazardTransform;
+            _transform = hazardTransform;
         }
 
-        JumpableTypes _requiredJumpType;
-        bool _canBeJumped;
-        Transform _hazardTransform;
+        public JumpableTypes _requiredJumpType;
+        public bool _canBeJumped;
+        public Transform _transform;
     }
 }
