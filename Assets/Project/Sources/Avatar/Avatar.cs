@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace ReversePlatformer
 {
@@ -16,7 +17,6 @@ namespace ReversePlatformer
             Idle,
             MovingForward,
             ApproachingHazard,
-            CrossingHazard,
             Dead
         }
 
@@ -58,9 +58,13 @@ namespace ReversePlatformer
         #endregion
 
         #region Public
-        public void StartRolling()
+        /// <summary>
+        /// Sets the Avatar in forward motion.
+        /// It will keep this forward movement and watch for avoidable Hazards.
+        /// </summary>
+        public void MoveForward()
         {
-            if (_currentStatus == AvatarStatus.Idle)
+            if (_currentStatus != AvatarStatus.MovingForward)
             {
                 _currentStatus = AvatarStatus.MovingForward;
                 _constantForce.enabled = true;
@@ -119,15 +123,21 @@ namespace ReversePlatformer
             {
                 if (hazard._requiredJumpType == JumpableTypes.longJumpable)
                 {
-
+                    Vector3 jumpTarget = new Vector3(transform.position.x + 4, transform.position.y, transform.position.z);
+                    Tween jump = transform.DOJump(jumpTarget, 2, 1, 1, false);
+                    yield return jump.WaitForCompletion();
                 }
                 else
                 {
-
+                    //_rb.DOJump(new Vector3(1, 1, 0), 2, 1, 2, false);
                 }
             }
 
-            Debug.Log("TOO CLOSE!");
+            // Back to normal, keep moving forward.
+            _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+            MoveForward();
+            yield return null;
         }
         #endregion
     }

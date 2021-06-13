@@ -21,7 +21,7 @@
         #region Overrides
         public override void DoBeforeEntering()
         {
-            _avatar.StartRolling();
+            _avatar.MoveForward();
             _player.StartInteracting();
         }
 
