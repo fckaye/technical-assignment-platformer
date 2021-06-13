@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8532116325256742768}
   - component: {fileID: 8532116325256742775}
   - component: {fileID: 8532116325256742771}
+  - component: {fileID: 928645733}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3abc804e1136f44a45b55d76d85c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 7
+  _maxHitPoints: 1
 --- !u!33 &8532116325256742769
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -123,3 +126,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!75 &928645733
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532116325256742774}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}

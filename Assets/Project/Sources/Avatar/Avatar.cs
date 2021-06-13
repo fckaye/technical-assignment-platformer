@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace ReversePlatformer
 {
+    [RequireComponent(typeof(SphereCollider))]
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(ConstantForce))]
     public class Avatar : MonoBehaviour
     {
         #region Fields
@@ -19,15 +21,20 @@ namespace ReversePlatformer
         public AvatarStatus CurrentStatus => _currentStatus;
 
         [SerializeField] private float _speed;
+        [SerializeField] private int _maxHitPoints = 1;
 
+        private int _hitPoints;
         private Rigidbody _rb = null;
+        private ConstantForce _constantForce = null;
         #endregion
 
         #region MonoBehaviour Callbacks
         private void Awake()
         {
             _currentStatus = AvatarStatus.Idle;
+            _hitPoints = _maxHitPoints;
             _rb = gameObject.GetComponent<Rigidbody>();
+            _constantForce = gameObject.GetComponent<ConstantForce>();
         }
 
         private void FixedUpdate()
@@ -35,6 +42,15 @@ namespace ReversePlatformer
             if (_currentStatus == AvatarStatus.MovingForward)
             {
                 MoveForward();
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            IContactDamager contactDamager = other.gameObject.GetComponent<IContactDamager>();
+            if (contactDamager != null)
+            {
+                contactDamager.onContactWithAvatar(this);
             }
         }
         #endregion
@@ -45,6 +61,18 @@ namespace ReversePlatformer
             if (_currentStatus == AvatarStatus.Idle)
             {
                 _currentStatus = AvatarStatus.MovingForward;
+                _constantForce.enabled = true;
+                _constantForce.force = Vector3.right * _speed;
+            }
+        }
+
+        public void ReceiveDamage()
+        {
+            _hitPoints--;
+            if (_hitPoints <= 0)
+            {
+                Debug.Log("The avatar died.");
+                _currentStatus = AvatarStatus.Dead;
             }
         }
         #endregion
@@ -52,9 +80,7 @@ namespace ReversePlatformer
         #region Private
         private void MoveForward()
         {
-            Vector3 direction = Vector3.right;
 
-            _rb.AddForce(direction * _speed);
         }
         #endregion
     }

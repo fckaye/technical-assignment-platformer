@@ -392,6 +392,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lava
       objectReference: {fileID: 0}
+    - target: {fileID: 7605973298202006463, guid: 5e4df35559ed2cf4ea758d3cb9d33079,
+        type: 3}
+      propertyPath: m_TagString
+      value: DamagingObstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 7605973298202006464, guid: 5e4df35559ed2cf4ea758d3cb9d33079,
         type: 3}
       propertyPath: m_RootOrder
@@ -446,6 +451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605973298202006465, guid: 5e4df35559ed2cf4ea758d3cb9d33079,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e4df35559ed2cf4ea758d3cb9d33079, type: 3}

@@ -22,6 +22,7 @@ namespace ReversePlatformer
         public override void Act()
         {
             //Write here what's supposed to happen on the endgamestate
+            Debug.Log("This is the EndGameState");
         }
 
         public override void Reason()
